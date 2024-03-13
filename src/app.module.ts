@@ -24,17 +24,7 @@ import { ConfigModule } from '@nestjs/config';
       })
      
     }),
-    // SequelizeModule.forRoot({
-    //   dialect: 'postgres',
-    //   host: 'aws-0-us-west-1.pooler.supabase.com',
-    //   port: 5432,
-    //   username: 'postgres.vnmwutsnsyqwpgtgsdvu',
-    //   password: '4KrFFUaSxjkjyAJe',
-    //   database: 'postgres',
-    //   autoLoadModels: true,
-    //   synchronize: true,
-    //   models: [HeroesVillanos],
-    // }),
+ 
     HeroesVillanosModule],
   controllers: [AppController],
   providers: [AppService],
