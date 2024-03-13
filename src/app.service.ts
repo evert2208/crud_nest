@@ -5,6 +5,6 @@ import { Sequelize } from 'sequelize-typescript';
 export class AppService {
   constructor(private sequelize: Sequelize){}
   getHello(): string {
-    return 'Hello World! in NEST API!!!!!!!!';
+    return 'API CRUD HEROES Y VILLANOS EN NEST';
   }
 }

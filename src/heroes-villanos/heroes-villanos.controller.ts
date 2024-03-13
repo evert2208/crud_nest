@@ -23,8 +23,8 @@ export class HeroesVillanosController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateHeroesVillanoDto: UpdateHeroesVillanoDto) {
-    return this.heroesVillanosService.update(+id, updateHeroesVillanoDto);
+  update(@Param('id') id: number, @Body() updateHeroesVillanoDto: UpdateHeroesVillanoDto) {
+    return this.heroesVillanosService.update(id, updateHeroesVillanoDto);
   }
 
   @Delete(':id')

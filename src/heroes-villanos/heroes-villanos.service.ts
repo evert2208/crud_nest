@@ -33,7 +33,7 @@ export class HeroesVillanosService {
     return await this.heroesVillanosModel.findAll();
   }
 
-  findOne(id: number): Promise<HeroesVillanos> {
+  findOne(id: number): Promise<HeroesVillanos|any> {
     return this.heroesVillanosModel.findOne({
       where: {
         id
@@ -41,16 +41,38 @@ export class HeroesVillanosService {
     });
   }
 
-  update(id: number, updateHeroesVillanoDto: UpdateHeroesVillanoDto) {
-    return `This action updates a #${id} heroesVillano`;
+  async update(id: number, updateHeroesVillanoDto: UpdateHeroesVillanoDto) { 
+    const data = await this.heroesVillanosModel.findByPk(id);
+    try {
+      if(!data){
+        return {
+          msg: "Registro no encontrado"
+        }
+      }
+
+      await data.update(updateHeroesVillanoDto);
+      return {
+        msg: `Registro ${id} actualizado`,
+        updateHeroesVillanoDto
+      }
+    } catch (error) {
+      return {
+        error
+      }
+    }
   }
 
-  remove(id: number) {
-
+  async remove(id: number) {
+    const data = await this.heroesVillanosModel.findByPk(id);
     try {
+      if(!data){
+        return {
+          msg: "Registro no encontrado"
+        }
+      }
       this.heroesVillanosModel.destroy({where: {id}});
       return {
-        msg: "eliminado"
+        msg: `Registro ${id} eliminado`
        }
     } catch (error) {
       return {
